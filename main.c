@@ -9,15 +9,17 @@
 #include <xc.h>
 #include "configBits.h"
 void main(void) {
-    int loop;
     TRISB = 0;
     LATB = 0;
     while (1) {
-        loop = 0;
-        LATB++;
-        while (loop < 30000) {
-            loop++;
-        }
+        LATB = 0x10;
+        delay(30000);
+        LATB = 0;
+        delay(10000);
+        LATB = 0x10;
+        delay(10000);
+        LATB = 0;
+        delay(30000);
     }
     return;
 }
