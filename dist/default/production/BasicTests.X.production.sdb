@@ -1,0 +1,38 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F13K22 ]
+[d frameptr 4065 ]
+"62 D:\Programs\Microchip\xc8\v1.37\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 D:\Programs\Microchip\xc8\v1.37\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 D:\Programs\Microchip\xc8\v1.37\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 D:\Programs\Microchip\xc8\v1.37\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 D:\Programs\Microchip\xc8\v1.37\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 D:\Programs\Microchip\xc8\v1.37\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 D:\Programs\Microchip\xc8\v1.37\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 D:\Programs\Microchip\xc8\v1.37\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 D:\Programs\Microchip\xc8\v1.37\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"11 D:\Documents\Projects\Cudrone\BasicTests.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"945 D:\Programs\Microchip\xc8\v1.37\include\pic18f13k22.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"1816
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"11 D:\Documents\Projects\Cudrone\BasicTests.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"12
+[v main@loop loop `i  1 a 2 0 ]
+"23
+} 0
