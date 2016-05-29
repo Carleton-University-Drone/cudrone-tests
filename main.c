@@ -10,11 +10,11 @@
 #include "configBits.h"
 void main(void) {
     int loop;
-    TRISA = 0;
-    LATA = 0;
+    TRISB = 0;
+    LATB = 0;
     while (1) {
         loop = 0;
-        LATA++;
+        LATB++;
         while (loop < 30000) {
             loop++;
         }
