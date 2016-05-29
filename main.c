@@ -21,3 +21,7 @@ void main(void) {
     }
     return;
 }
+
+void delay(int c){
+    for(;c>0;c--);
+}
