@@ -11,10 +11,10 @@
 void main(void) {
     int loop;
     TRISA = 0;
-    PORTA = 0;
+    LATA = 0;
     while (1) {
         loop = 0;
-        PORTA++;
+        LATA++;
         while (loop < 30000) {
             loop++;
         }
