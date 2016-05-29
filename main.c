@@ -7,7 +7,7 @@
 
 #include <xc.h>
 #include "configBits.h"
-void delay(int c);
+void delay(char c);
 void main(void) {
     //Light Registers
     TRISB = 0;
@@ -36,6 +36,15 @@ void main(void) {
     return;
 }
 
-void delay(int c){
-    for(;c>0;c--);
+void delay(char c){
+    //enable timer
+    T0CON = 0b11001011;
+    //Clear current count
+    TMR0L=0;
+    
+    //Constantly poll timer to see if it goes surpasses threshold
+    while(TMR0L<c);
+    
+    //disable timer
+    T0CON = 0b01000000;
 }
