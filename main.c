@@ -7,6 +7,9 @@
 
 #include <xc.h>
 #include "configBits.h"
+
+#define DELAY_TIME 100
+
 void delay(char c);
 void main(void) {
     //Light Registers
@@ -21,30 +24,32 @@ void main(void) {
         } else {
             LATB = 0x20;
         }
-        delay(30000);
+        delay(3*DELAY_TIME);
         LATB = 0;
-        delay(10000);
+        delay(DELAY_TIME);
         if (PORTC & 0x04 == 0x04) {
             LATB = 0x10;
         } else {
             LATB = 0x20;
         }
-        delay(10000);
+        delay(DELAY_TIME);
         LATB = 0;
-        delay(30000);
+        delay(3*DELAY_TIME);
     }
     return;
 }
 
 void delay(char c){
     //enable timer
-    T0CON = 0b11001011;
+    T0CON = 0b10001111;
+    
     //Clear current count
+    TMR0H=0;//this must come first
     TMR0L=0;
     
     //Constantly poll timer to see if it goes surpasses threshold
-    while(TMR0L<c);
+    while(TMR0H<c)TMR0L;
     
     //disable timer
-    T0CON = 0b01000000;
+    T0CON = 0b00000000;
 }
