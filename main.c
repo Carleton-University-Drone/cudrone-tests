@@ -21,24 +21,24 @@ void main(void) {
         } else {
             LATB = 0x20;
         }
-        delay(30000);
+        delay(240);
         LATB = 0;
-        delay(10000);
+        delay(80);
         if (PORTC & 0x04 == 0x04) {
             LATB = 0x10;
         } else {
             LATB = 0x20;
         }
-        delay(10000);
+        delay(80);
         LATB = 0;
-        delay(30000);
+        delay(240);
     }
     return;
 }
 
 void delay(char c){
     //enable timer
-    T0CON = 0b11001011;
+    T0CON = 0b11001111;
     //Clear current count
     TMR0L=0;
     
