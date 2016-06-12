@@ -18,7 +18,8 @@ void main(void) {
     LATB = 0;
     //Button Registers
     PORTC = 0;
-    TRISC = 0x04;
+    ANSELbits.ANS6 = 0; //Disable analog to digital conversion RC2
+    TRISCbits.TRISC2=1;
     
     setupTimerInterupt();
     while (1) {
@@ -35,19 +36,22 @@ void setupTimerInterupt(void){
     TMR0H=0;//this must come first
     TMR0L=0;
     
-    
-    RCONbits.IPEN=1;        //Enable low and high priority interupts
+    RCONbits.IPEN=1;        //Enable low and high priority interrupts
     INTCON2bits.TMR0IP=0;   //Set low priority
-    INTCONbits.TMR0IE=1;    //Enable timer0 oveflow interupts
-    INTCONbits.PEIE=1;      //Enable low priority interupts
-    INTCONbits.GIE=1;       //Global Interupt enable
-    INTCONbits.TMR0IF=0;    //Clear interupt flag
+    INTCONbits.TMR0IE=1;    //Enable timer0 overflow interrupts
+    INTCONbits.PEIE=1;      //Enable low priority interrupts
+    INTCONbits.GIE=1;       //Global Interrupt enable
+    INTCONbits.TMR0IF=0;    //Clear interrupt flag
 }
 
 void interrupt low_priority low_priority_isr(void){
-    if (INTCONbits.TMR0IF && INTCONbits.TMR0IE){
-        LATB = LATB^0x10;
-        LATB = LATB^0x20;
-        INTCONbits.TMR0IF=0; // Clear interupt flag
+    if (INTCONbits.TMR0IF && INTCONbits.TMR0IE){ //Timer0 ISR
+        if (PORTCbits.RC2){
+            LATB = LATB^0x10;
+        }
+        else {
+            LATB = LATB^0x20;
+        }
+        INTCONbits.TMR0IF=0; // Clear interrupt flag
     }
 }
