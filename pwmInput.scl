@@ -1,0 +1,9 @@
+testbench for "pic18f13k22" is
+    begin
+        process is
+            RD0 <= 1;
+            wait for 0.5 ms;
+            RD0 <= 0;
+            wait for (25-0.5) ms;
+        end process
+    end testbench

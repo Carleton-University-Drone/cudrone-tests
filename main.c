@@ -8,11 +8,34 @@
 #include <xc.h>
 #include "configBits.h"
 
+#ifdef DEBUG //Debug functions
+
+#include <stdio.h>
+void putch(unsigned char data) {
+    while( ! PIR1bits.TXIF)          // wait until the transmitter is ready
+        continue;
+    TXREG = data;                     // send one character
+}
+
+void init_uart(void) {
+    TXSTAbits.TXEN = 1;               // enable transmitter
+    RCSTAbits.SPEN = 1;               // enable serial port
+}
+
+#endif
 
 void setupTimerInterupt(void);
 void interrupt low_priority low_priority_isr(void);
 
+
+
+
 void main(void) {
+    
+    #ifdef DEBUG
+    init_uart();
+    #endif
+
     //Light Registers
     TRISB = 0;
     LATB = 0;
@@ -23,7 +46,11 @@ void main(void) {
     
     setupTimerInterupt();
     while (1) {
-        //do something else
+        
+        #ifdef DEBUG
+        printf("Hello world \n");
+        #endif
+
     }
     return;
 }

@@ -1,0 +1,10 @@
+testbench for "pic18f13k22" is
+   begin
+      process is
+         begin
+            RC2 <= 1;
+            wait for 20.5 ms;
+            RC2 <= 1;
+            wait for 20.5 ms;
+         end process;
+   end testbench;
