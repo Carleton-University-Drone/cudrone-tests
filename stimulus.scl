@@ -1,0 +1,10 @@
+testbench for "PIC18F13K22" is
+    begin
+        process is 
+            begin
+                RA0 <= '1';     // clock low
+                wait for 0.5 ms;
+                RA0 <= '0';     // clock high
+                wait for 24.5 ms;
+            end process;       // wrap back to start
+    end testbench;    

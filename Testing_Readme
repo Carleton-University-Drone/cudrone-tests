@@ -1,0 +1,15 @@
+Setup:
+To run tests to need to create a configuration that uses the simulator as the build tool
+Enable uart printing to window under Configuration:Simulator:Uart1IO
+Under Configuration:building checkoff execute line after build and add the following line "mdb sim_instructions_mdb.txt"
+Under Configuration:xc8 global:xc8 compiler define macro "DEBUG"
+
+Running tests:
+At this point, ensure you have the testing configuration selected and when you build the tests will automatically run
+You would see All tests passed or _ of _ tests failed in the mess of console output
+
+Adding more tests:
+A test is a simple function that returns a boolean integer for fail or pass. Write your function, and ensure that it is
+somewhere that it will only be build if DEBUG is defined. 
+In tests.h add your function and message to the appropriate defines and increment the number of tests
+If you need special external stimulus add and new process to the stimulus.scl

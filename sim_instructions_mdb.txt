@@ -1,0 +1,15 @@
+Device PIC18F13K22
+Hwtool SIM
+set oscillator.frequency 16
+set oscillator.frequencyunit Mega
+set oscillator.rcfrequency 250
+set oscillator.rcfrequencyunit Kilo
+Set uart1io.uartioenabled true
+Set uart1io.output console
+Program "./dist/Tests/production/cudrone-tests.production.hex"
+stim stimulus.scl
+Reset
+break 0x1FF0
+Run
+wait 5000
+Quit
