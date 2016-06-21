@@ -16,16 +16,16 @@ extern "C" {
 #define Test_Messages {"Basic Test", "Super Test", "Amazing Test"}
 #define Testing_Functions {basicTest, basicTest, basicTest}
 
-//Helper functions
-void putch(unsigned char data);
-void init_uart(void);
-void dead_loop(void) __attribute__((address(0x1FF0))); //break this
-void run_tests(void);
+    //Helper functions
+    void putch(unsigned char data);
+    void init_uart(void);
+    void dead_loop(void) __attribute__((address(0x1FF0))); //break this
+    void run_tests(void);
 
-int test(const char * name, int (*t)(void) );
+    int test(const char * name, int (*t)(void) );
 
-//test
-int basicTest(void);
+    //test
+    int basicTest(void);
 #ifdef	__cplusplus
 }
 #endif
