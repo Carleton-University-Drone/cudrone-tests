@@ -1,7 +1,7 @@
-#include "tests.h"
-#include <stdio.h>
 #include <xc.h>
-
+#include <stdio.h>
+#include "tests.h"
+#include "timer0.h"
 //Colors
 #define KNRM  "\x1B[0m"
 #define KRED  "\x1B[31m"
@@ -24,7 +24,7 @@ void init_uart(void) {
 }
 
 void dead_loop(void) __attribute__((address(0x1FF0))){
-    while(1);
+    while(1) printf("%ld\n",timer0_millis());
 }
 
 void run_tests(void){

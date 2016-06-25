@@ -9,17 +9,13 @@
 #include "config_bits.h"
 #include "interrupt.h"
 #include "timer0.h"
-
+#include "setup.h"
 #ifdef DEBUG
 #include "tests.h"
 #endif
 
 void main(void) {
     
-    #ifdef DEBUG
-    run_tests();
-    #endif
-
     //Light Registers
     TRISB = 0;
     LATB = 0;
@@ -28,8 +24,14 @@ void main(void) {
     ANSELbits.ANS6 = 0; //Disable analog to digital conversion RC2
     TRISCbits.TRISC2=1;
     
+    setup_clock();
     enable_interrupts();
     enable_timer0();
+    
+    #ifdef DEBUG
+    run_tests();
+    #endif
+
     while (1) {
         //main loop
     }

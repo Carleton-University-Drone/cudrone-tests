@@ -3,6 +3,8 @@ To run tests to need to create a configuration that uses the simulator as the bu
 Enable uart printing to window under Configuration:Simulator:Uart1IO
 Under Configuration:building checkoff execute line after build and add the following line "mdb sim_instructions_mdb.txt"
 Under Configuration:xc8 global:xc8 compiler define macro "DEBUG"
+For all configurations that will not be running tests, right click on the testing files,
+click properties, slect the appropriate configuration and check off exclude from build.
 
 Running tests:
 At this point, ensure you have the testing configuration selected and when you build the tests will automatically run

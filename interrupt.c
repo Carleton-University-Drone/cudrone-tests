@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "interrupt.h"
+#include "timer0.h"
 void enable_interrupts(void){
     RCONbits.IPEN=1;        //Enable low and high priority interrupts
     INTCON2bits.TMR0IP=0;   //Set low priority
