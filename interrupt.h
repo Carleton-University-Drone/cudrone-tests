@@ -14,6 +14,7 @@ extern "C" {
     
     void enable_interrupts(void);
     void interrupt low_priority low_priority_isr(void);
+    void interrupt high_priority high_priority_isr(void)
 
 #ifdef	__cplusplus
 }
