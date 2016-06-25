@@ -11,7 +11,9 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    //private
     long time_ovf;
+    
     void enable_timer0(void);
     void timer0_isr(void);
     long timer0_millis(void); //Returns the current time in number of 0.1 miliseconds

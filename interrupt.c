@@ -13,4 +13,8 @@ void interrupt low_priority low_priority_isr(void){
         timer0_isr();
         INTCONbits.TMR0IF=0; // Clear interrupt flag
     }
+    if (INTCONbits.INT0IF && INTCONbits.INT0IE){
+        int0_isr();
+        INTCONbits.INT0IF=0;
+    }
 }
