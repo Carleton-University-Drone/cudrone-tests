@@ -15,10 +15,18 @@ void interrupt low_priority low_priority_isr(void){
         int0_isr();
         INTCONbits.INT0IF=0;
     }
+    if (INTCON3bits.INT1F && INTCON3bits.INT1E){
+        int1_isr();
+        INTCON3bits.INT1F=0;
+    }
+    if (INTCON3bits.INT2F && INTCON3bits.INT2E){
+        int2_isr();
+        INTCON3bits.INT2F=0;
+    }
 }
 
 void interrupt high_priority high_priority_isr(void){
-    if (INTCONbits.INT0IF && INTCONbits.INT0IE){
+    if (INTCONbits.INT0IF && INTCONbits.INT0IE){ //This should be low priority but int0 is only high priority
         int0_isr();
         INTCONbits.INT0IF=0;
     }
