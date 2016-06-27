@@ -12,9 +12,10 @@
 extern "C" {
 #endif
 
+    void setup(void);
     void setup_clock(void);
     
-
+    
 
 #ifdef	__cplusplus
 }

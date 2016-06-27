@@ -3,17 +3,20 @@
 #include "timer0.h"
 void setup_pulse_in(void){
     //Input channel 1 (int0)
+    TRISAbits.RA0 = 1; //Set io port to input
     INTCONbits.INT0IE = 1; //Enables the INT0 external interrupt
     INTCON2bits.INTEDG0 = 1; //Interrupt on rising edge (This is the starting state)
     int0_start_time = timer0_millis();
     
     //Input channel 2 (int1)
+    TRISAbits.RA0 = 1; //Set io port to input
     INTCON3bits.INT1E = 1; //Enables the INT1 external interrupt
     INTCON3bits.INT1IP = 0; //Low priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
     int1_start_time = int0_start_time;
     
     //Input channel 3 (int2)
+    TRISAbits.RA0 = 1; //Set io port to input
     INTCON3bits.INT2E = 1; // Enables the INT2 external interrupt
     INTCON3bits.INT2IP = 0; //Low priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)

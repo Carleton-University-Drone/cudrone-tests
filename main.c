@@ -10,6 +10,7 @@
 #include "interrupt.h"
 #include "timer0.h"
 #include "setup.h"
+#include "pulse_in.h"
 #ifdef DEBUG
 #include "tests.h"
 #endif
@@ -24,13 +25,7 @@ void main(void) {
     ANSELbits.ANS6 = 0; //Disable analog to digital conversion RC2
     TRISCbits.TRISC2=1;
     
-    setup_clock();
-    enable_interrupts();
-    enable_timer0();
-    
-    #ifdef DEBUG
-    run_tests();
-    #endif
+    setup();
 
     while (1) {
         //main loop
