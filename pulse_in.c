@@ -21,6 +21,25 @@ void setup_pulse_in(void){
     INTCON3bits.INT2IP = 0; //Low priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
     int2_start_time = int0_start_time;
+    
+    //Input channel 4 (CMR1)
+        //Setup voltage reference
+    VREFCON0bits.FVR1EN = 1; //Fixed Voltage reference is enabled
+    VREFCON0bits.FVR1S0 = 1; VREFCON0bits.FVR1S1 = 0; //Fixed Voltage level is 2.048 V
+     //Fixed Voltage level is 2.048 V
+        //Setup Comparator
+    ANSELbits.ANS5 = 1; //
+    TRISCbits.RC1 = 1; // 
+    CM1CON0bits.C1ON = 1; //Comparator C1 is enabled
+    CM1CON0bits.C1OE = 0; //C1OUT is internal only
+    CM1CON0bits.C1POL = 1; //C1OUT logic is inverted (Thus a 1 on out corresponds to a high value)
+    CM1CON0bits.C1SP = 1; //C1 operates in normal power, higher speed mode
+    CM1CON0bits.C1R = 1; //C1V IN + connects to C1V REF output
+    CM1CON0bits.C1CH = 0b01; //C12IN1- pin of C1 connects to C1V IN -
+        //Setup interrupts
+    PIE2bits.C1IE = 1; //Comparator C1 Interrupt Enable bit (Enabled))
+    IPR2bits.C1IP = 0; //Low priority
+    PIR2bits.C1IF = 0; //Clear interrupt flag
 }
 
 /*
@@ -75,4 +94,22 @@ long channel_2_get_width(void){
 
 long channel_3_get_width(void){
     return int2_width;
+}
+
+/*
+ * Input channel 4 (cmr1)
+ */
+void cmr1_isr(void){
+    if (CM1CON0bits.C1OUT) { //Comparator C1 Output bit
+        //case high output (rising edge)
+        cmr1_start_time = timer0_millis();
+    }
+    else {
+        //case low output (falling edge)
+        cmr1_width = timer0_millis()-cmr1_start_time;
+    }
+}
+
+long channel_4_get_width(void){
+    return cmr1_width;
 }

@@ -36,6 +36,15 @@ extern "C" {
     
     void int2_isr(void);
     long channel_3_get_width(void);
+    
+    //Input channel 4 (cmr1)
+    //private
+    long cmr1_start_time;
+    long cmr1_width;
+    
+    void cmr1_isr(void);
+    long channel_4_get_width(void);
+    
 #ifdef	__cplusplus
 }
 #endif

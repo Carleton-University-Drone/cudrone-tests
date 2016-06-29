@@ -1,4 +1,9 @@
 #include <xc.h>
+#include "setup.h"
+#include "config_bits.h"
+#include "interrupt.h"
+#include "timer0.h"
+#include "pulse_in.h"
 void setup(){
     setup_clock();
     enable_interrupts();

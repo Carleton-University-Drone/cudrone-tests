@@ -6,11 +6,8 @@
  */
 
 #include <xc.h>
-#include "config_bits.h"
-#include "interrupt.h"
-#include "timer0.h"
 #include "setup.h"
-#include "pulse_in.h"
+
 #ifdef DEBUG
 #include "tests.h"
 #endif

@@ -23,6 +23,10 @@ void interrupt low_priority low_priority_isr(void){
         int2_isr();
         INTCON3bits.INT2F=0;
     }
+    if (PIE2bits.C1IE && PIR2bits.C1IF){
+        cmr1_isr();
+        PIR2bits.C1IF = 0;
+    }
 }
 
 void interrupt high_priority high_priority_isr(void){
