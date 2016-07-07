@@ -12,7 +12,7 @@
 extern "C" {
 #endif
     //private
-    long time_ovf;
+    volatile long time_ovf;
     
     void enable_timer0(void);
     void timer0_isr(void);

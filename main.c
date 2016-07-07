@@ -7,7 +7,8 @@
 
 #include <xc.h>
 #include "setup.h"
-
+#include "pulse_in.h"
+#include "timer0.h"
 #ifdef DEBUG
 #include "tests.h"
 #endif
@@ -16,16 +17,11 @@ void main(void) {
     
     //Light Registers
     TRISB = 0;
-    LATB = 0;
-    //Button Registers
-    PORTC = 0;
-    ANSELbits.ANS6 = 0; //Disable analog to digital conversion RC2
-    TRISCbits.TRISC2=1;
-    
+    LATB = 0;    
     setup();
 
     while (1) {
-        //main loop
+        //LATB = time_ovf<<4;
     }
     return;
 }

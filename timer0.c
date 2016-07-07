@@ -6,8 +6,8 @@ void enable_timer0(void){
     T0CONbits.T08BIT = 0; //Timer0 8-bit/16-bit Control bit (16bit)
     T0CONbits.T0CS = 0; //Timer0 Clock Source Select bit (Internal instruction cycle clock)
     T0CONbits.PSA = 0; // Timer0 Prescaler Assignment bit (Enable Prescaller)
-    T0CONbits.T0PS = 0b111;
-    
+    T0CONbits.T0PS = 0b111; //Set prescaler to 256
+    INTCON2bits.TMR0IP = 0; //Set low priority interrupt
     //Clear current count
     TMR0H=0;//this must come first
     TMR0L=0;
