@@ -6,6 +6,7 @@ void setup_pulse_in(void){
     TRISAbits.RA0 = 1; //Set io port to input
     INTCONbits.INT0IE = 1; //Enables the INT0 external interrupt
     INTCON2bits.INTEDG0 = 1; //Interrupt on rising edge (This is the starting state)
+    ANSELbits.ANS0 = 0; //Digital input buffer of RA0 is enabled
     int0_start_time = timer0_millis();
     
     //Input channel 2 (int1)
@@ -13,6 +14,7 @@ void setup_pulse_in(void){
     INTCON3bits.INT1E = 1; //Enables the INT1 external interrupt
     INTCON3bits.INT1IP = 0; //Low priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
+    ANSELbits.ANS1 = 0; //Digital input buffer of RA1 is enabled
     int1_start_time = int0_start_time;
     
     //Input channel 3 (int2)
@@ -20,6 +22,7 @@ void setup_pulse_in(void){
     INTCON3bits.INT2E = 1; // Enables the INT2 external interrupt
     INTCON3bits.INT2IP = 0; //Low priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
+    ANSELbits.ANS2 = 0; //Digital input buffer of RA2 is enabled
     int2_start_time = int0_start_time;
     
     //Input channel 4 (CMR1)
@@ -28,8 +31,8 @@ void setup_pulse_in(void){
     VREFCON0bits.FVR1S0 = 1; VREFCON0bits.FVR1S1 = 0; //Fixed Voltage level is 2.048 V
      //Fixed Voltage level is 2.048 V
         //Setup Comparator
-    ANSELbits.ANS5 = 1; //
-    TRISCbits.RC1 = 1; // 
+    ANSELbits.ANS5 = 1; // Digital input buffer of RC1 is disabled
+    TRISCbits.RC1 = 1; // pin configured as an input (tri-stated)
     CM1CON0bits.C1ON = 1; //Comparator C1 is enabled
     CM1CON0bits.C1OE = 0; //C1OUT is internal only
     CM1CON0bits.C1POL = 1; //C1OUT logic is inverted (Thus a 1 on out corresponds to a high value)

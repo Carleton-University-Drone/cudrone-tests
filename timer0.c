@@ -17,12 +17,6 @@ void enable_timer0(void){
 }
 
 void timer0_isr(void){
-    if (PORTCbits.RC2){
-        LATB = LATB^0x10;
-    }
-    else {
-        LATB = LATB^0x20;
-    }
     time_ovf++;
 }
 
