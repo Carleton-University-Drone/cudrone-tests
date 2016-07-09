@@ -89,7 +89,7 @@ extern "C" {
 
 // CONFIG1H
 #pragma config FOSC = IRC       // Oscillator Selection bits (Internal RC oscillator)
-#pragma config PLLEN = OFF      // 4 X PLL Enable bit (PLL is under software control)
+#pragma config PLLEN = ON      // 4 X PLL Enable bit (PLL is on)
 #pragma config PCLKEN = OFF     // Primary Clock Enable bit (Primary clock is under software control)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)

@@ -21,7 +21,7 @@ void main(void) {
     setup();
 
     while (1) {
-        LATB = channel_4_get_width()<<3;
+        LATB =  timer0_millis()>>14;
     }
     return;
 }

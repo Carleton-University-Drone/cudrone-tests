@@ -27,11 +27,14 @@ long timer0_millis(void){
     m+=time_ovf<<16;
     m+=TMR0L;
     m+=TMR0H<<8;
-    m=(m*4)/25; //This magic number is the scale factor for converting between
+    m=(m*131)>>15; //This magic number is the scale factor for converting between
                 // the timer values and the number of milli seconds.
                 // The formula is 
                 //    (clockPrscaller)/(Clock frequency) * 10000 (s->0.1 ms)
                 //I didn't use a constant to multiply because the order of
-                //operations are important, so minimize the division error
+                //operations are important, so minimize the division error.
+                //Also since the processor doesn't have a division module I used
+                //mutliply by a constant then big shift for the desired effect
+                //these is some rounding error but it is not significant
     return m;
 }
