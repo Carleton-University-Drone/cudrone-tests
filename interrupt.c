@@ -11,9 +11,17 @@ void enable_interrupts(void){
 }
 
 void interrupt low_priority low_priority_isr(void){
+    
+}
+
+void interrupt high_priority high_priority_isr(void){
     if (INTCONbits.TMR0IE && INTCONbits.TMR0IF){
         timer0_isr();
         INTCONbits.TMR0IF = 0;
+    }
+    if (INTCONbits.INT0IF && INTCONbits.INT0IE){ //This should be low priority but int0 is only high priority
+        int0_isr();
+        INTCONbits.INT0IF=0;
     }
     if (INTCONbits.INT0IF && INTCONbits.INT0IE){
         int0_isr();
@@ -30,12 +38,5 @@ void interrupt low_priority low_priority_isr(void){
     if (PIE2bits.C1IE && PIR2bits.C1IF){
         cmr1_isr();
         PIR2bits.C1IF = 0;
-    }
-}
-
-void interrupt high_priority high_priority_isr(void){
-    if (INTCONbits.INT0IF && INTCONbits.INT0IE){ //This should be low priority but int0 is only high priority
-        int0_isr();
-        INTCONbits.INT0IF=0;
     }
 }

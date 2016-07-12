@@ -12,7 +12,7 @@ void setup_pulse_in(void){
     //Input channel 2 (int1)
     TRISAbits.RA0 = 1; //Set io port to input
     INTCON3bits.INT1E = 1; //Enables the INT1 external interrupt
-    INTCON3bits.INT1IP = 0; //Low priority
+    INTCON3bits.INT1IP = 1; //High priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
     ANSELbits.ANS1 = 0; //Digital input buffer of RA1 is enabled
     int1_start_time = int0_start_time;
@@ -20,7 +20,7 @@ void setup_pulse_in(void){
     //Input channel 3 (int2)
     TRISAbits.RA0 = 1; //Set io port to input
     INTCON3bits.INT2E = 1; // Enables the INT2 external interrupt
-    INTCON3bits.INT2IP = 0; //Low priority
+    INTCON3bits.INT2IP = 1; //High priority
     INTCON2bits.INTEDG1 = 1; //Interrupt on rising edge (This is the starting state)
     ANSELbits.ANS2 = 0; //Digital input buffer of RA2 is enabled
     int2_start_time = int0_start_time;
@@ -41,7 +41,7 @@ void setup_pulse_in(void){
     CM1CON0bits.C1CH = 0b01; //C12IN1- pin of C1 connects to C1V IN -
         //Setup interrupts
     PIE2bits.C1IE = 1; //Comparator C1 Interrupt Enable bit (Enabled))
-    IPR2bits.C1IP = 0; //Low priority
+    IPR2bits.C1IP = 1; //High priority
     PIR2bits.C1IF = 0; //Clear interrupt flag
 }
 
