@@ -19,7 +19,7 @@ extern "C" {
     volatile long int0_width;
     
     void int0_isr(void);
-    long channel_1_get_width(void);
+    long pitch_get_width(void);
 
     //Input channel 2 (int1)
     //private
@@ -27,7 +27,7 @@ extern "C" {
     volatile long int1_width;
     
     void int1_isr(void);
-    long channel_2_get_width(void);
+    long roll_get_width(void);
 
     //Input channel 3 (int2)
     //private
@@ -35,7 +35,7 @@ extern "C" {
     volatile long int2_width;
     
     void int2_isr(void);
-    long channel_3_get_width(void);
+    long yaw_get_width(void);
     
     //Input channel 4 (cmr1)
     //private
@@ -43,7 +43,7 @@ extern "C" {
     volatile long cmr1_width;
     
     void cmr1_isr(void);
-    long channel_4_get_width(void);
+    long throttle_get_width(void);
     
 #ifdef	__cplusplus
 }
