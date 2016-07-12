@@ -12,11 +12,11 @@
 extern "C" {
 #endif
     //private
-    volatile long time_ovf;
+    volatile unsigned int time_ovf;
     
     void enable_timer0(void);
     void timer0_isr(void);
-    long timer0_millis(void); //Returns the current time in number of 0.1 miliseconds
+    unsigned int  timer0_millis(void); //Returns the current time in number of 0.1 miliseconds
                               //that have passed since enable_timer0 
 
 #ifdef	__cplusplus

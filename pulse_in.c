@@ -59,7 +59,7 @@ void setup_pulse_in(void){
     INTCON2bits.INTEDG0 = !INTCON2bits.INTEDG0;
 }
 
-long pitch_get_width(void){
+unsigned int pitch_get_width(void){
     return int0_width;
 }
 
@@ -77,7 +77,7 @@ long pitch_get_width(void){
     INTCON2bits.INTEDG1 = !INTCON2bits.INTEDG1;
 }
 
-long roll_get_width(void){
+unsigned int roll_get_width(void){
     return int1_width;
 }
 
@@ -95,7 +95,7 @@ long roll_get_width(void){
     INTCON2bits.INTEDG2 = !INTCON2bits.INTEDG2;
 }
 
-long yaw_get_width(void){
+unsigned int yaw_get_width(void){
     return int2_width;
 }
 
@@ -113,6 +113,6 @@ void cmr1_isr(void){
     }
 }
 
-long throttle_get_width(void){
+unsigned int throttle_get_width(void){
     return cmr1_width;
 }

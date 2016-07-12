@@ -22,8 +22,8 @@ void timer0_isr(void){
 
 //Returns the current time in number of 0.1 miliseconds
 //that have passed since enable_timer0 
-long timer0_millis(void){
-    long m = 0;
+unsigned int timer0_millis(void){
+    unsigned int m = 0;
     m+=time_ovf<<16;
     m+=TMR0L;
     m+=TMR0H<<8;
