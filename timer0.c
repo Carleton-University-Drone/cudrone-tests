@@ -20,11 +20,12 @@ void timer0_isr(void){
     time_ovf++;
 }
 
-//Returns the current time in number of 0.1 miliseconds
+//Returns the current time in number of 0.1 milliseconds
 //that have passed since enable_timer0 
 unsigned int timer0_millis(void){
-    unsigned int m = 0;
-    m+=time_ovf<<16;
+    unsigned long m = 0;
+    m=time_ovf;
+    m=m<<16;
     m+=TMR0L;
     m+=TMR0H<<8;
     m=(m*131)>>15; //This magic number is the scale factor for converting between
