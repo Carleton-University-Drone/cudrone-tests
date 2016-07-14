@@ -19,23 +19,23 @@ void interrupt high_priority high_priority_isr(void){
         timer0_isr();
         INTCONbits.TMR0IF = 0;
     }
-    if (INTCONbits.INT0IF && INTCONbits.INT0IE){ //This should be low priority but int0 is only high priority
+    if (INTCONbits.INT0IF){ //This should be low priority but int0 is only high priority
         int0_isr();
         INTCONbits.INT0IF=0;
     }
-    if (INTCONbits.INT0IF && INTCONbits.INT0IE){
+    if (INTCONbits.INT0IF){
         int0_isr();
         INTCONbits.INT0IF=0;
     }
-    if (INTCON3bits.INT1F && INTCON3bits.INT1E){
+    if (INTCON3bits.INT1F){
         int1_isr();
         INTCON3bits.INT1F=0;
     }
-    if (INTCON3bits.INT2F && INTCON3bits.INT2E){
+    if (INTCON3bits.INT2F){
         int2_isr();
         INTCON3bits.INT2F=0;
     }
-    if (PIE2bits.C1IE && PIR2bits.C1IF){
+    if (PIR2bits.C1IF){
         cmr1_isr();
         PIR2bits.C1IF = 0;
     }
