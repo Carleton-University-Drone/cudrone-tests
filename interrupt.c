@@ -12,7 +12,10 @@ void enable_interrupts(void){
 }
 
 void interrupt low_priority low_priority_isr(void){
-    
+    if (PIR1bits.TMR2IF){
+        controller_step(); // timer2 isr, pid controller step
+        PIR1bits.TMR2IF=0;
+    }
 }
 
 void interrupt high_priority high_priority_isr(void){
