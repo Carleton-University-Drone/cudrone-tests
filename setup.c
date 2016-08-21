@@ -5,13 +5,14 @@
 #include "timer0.h"
 #include "pulse_in.h"
 #include "pulse_out.h"
+#include "uart.h"
 void setup(){
     setup_clock();
     enable_interrupts();
     enable_timer0();
     setup_pulse_in();
     setup_pulse_out();
-    
+    setup_uart();
     #ifdef DEBUG
     run_tests();
     #endif

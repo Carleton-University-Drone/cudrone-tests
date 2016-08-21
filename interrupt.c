@@ -16,6 +16,14 @@ void interrupt low_priority low_priority_isr(void){
         controller_step(); // timer2 isr, pid controller step
         PIR1bits.TMR2IF=0;
     }
+    else if (PIR1bits.RCIF && PIE1bits.RCIE){
+        uart_received();
+        PIR1bits.RCIF = 0;
+    }
+    else if (PIR1bits.TXIF && PIE1bits.TXIE){
+        uart_transmit_complete();
+        PIR1bits.TXIF = 0;
+    }
 }
 
 void interrupt high_priority high_priority_isr(void){

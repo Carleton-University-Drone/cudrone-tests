@@ -14,14 +14,20 @@
 #endif
 
 void main(void) {
-    
+    /* TODO:
+     *      Integrate xbee uart debug
+     *      Test pulse in and pulse out
+     *      communicate with imu
+     *      calibrate pid controller
+     *      Integrate xbee uart for control
+     */
     //Light Registers
-    TRISB = 0;
-    LATB = 0;    
+    TRISA = 0;
+    LATA = 0;    
     setup();
 
     while (1) {
-        LATB =  timer0_millis()>>14;
+        LATA =  timer0_millis();
     }
     return;
 }
