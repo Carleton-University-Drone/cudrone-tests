@@ -36,28 +36,6 @@ extern "C" {
     int yaw_last_value;
     int yaw_integral;
     
-    //Inline helper functions
-    
-    inline int pulse_in_to_pid(int in){ //this function converts and scales the value outputed by pulse in
-        return in;                      //to the format used by the pid
-    }
-    
-    inline int pid_to_pulse_out(int out){ // Converts the output from the pid to the correct scale
-        return out;                       //for the pulse out functions
-    }
-    
-    inline int get_pitch(void) { // gets the current pitch from the IMU
-        return 0;
-    }
-    
-    inline int get_roll(void) { // gets the current roll from the IMU
-        return 0;
-    }
-    
-    inline int get_yaw(void) { // gets the current yaw from the IMU
-        return 0;
-    }
-    
     //Main pid logic
     
     void setup_controller(void); //Sets up everything needed to run controller

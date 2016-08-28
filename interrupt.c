@@ -3,6 +3,8 @@
 #include "timer0.h"
 #include "pulse_in.h"
 #include "pulse_out.h"
+#include "controller.h"
+#include "uart.h"
 void enable_interrupts(void){
     RCONbits.IPEN=1;        //Enable low and high priority interrupts
     INTCON2bits.TMR0IP=0;   //Set low priority
