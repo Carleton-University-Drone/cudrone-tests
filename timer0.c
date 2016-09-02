@@ -11,6 +11,8 @@ void enable_timer0(void){
     //Clear current count
     TMR0H=0;//this must come first
     TMR0L=0;
+    INTCON2bits.TMR0IP=0;   //Set low priority
+    INTCONbits.TMR0IF=0;    //Clear interrupt flag
     INTCONbits.TMR0IE=1;    //Enable timer0 overflow interrupts
 
     time_ovf = 0;
